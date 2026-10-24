@@ -1,0 +1,17 @@
+* { box-sizing: border-box; }
+:root { color-scheme: light; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color: #29211d; background: #f7f4ed; }
+body { margin: 0; min-width: 0; min-height: 100vh; min-height: 100svh; display: grid; place-items: center; padding: 64px 24px; }
+.page { width: 100%; max-width: 360px; text-align: center; }
+.logo { display: block; width: 216px; max-width: 85%; height: auto; margin: 0 auto; }
+.description { margin: 28px 0 38px; font-size: 15px; font-weight: 400; line-height: 1.85; letter-spacing: -.025em; }
+.links { position: relative; display: grid; gap: 12px; isolation: isolate; }
+.links::before { content: ""; position: absolute; z-index: -1; inset: -28px -16px; background: radial-gradient(ellipse at 20% 36%, rgba(240,90,42,.18), transparent 58%), radial-gradient(ellipse at 85% 70%, rgba(150,105,64,.10), transparent 55%), radial-gradient(ellipse at 72% 14%, rgba(255,255,255,.8), transparent 45%); -webkit-mask-image: radial-gradient(ellipse at center, #000 28%, transparent 72%); mask-image: radial-gradient(ellipse at center, #000 28%, transparent 72%); pointer-events: none; }
+.links a { position: relative; display: flex; align-items: center; justify-content: center; min-height: 58px; padding: 16px 44px; border: 1px solid rgba(255,255,255,.72); border-radius: 14px; color: #29211d; background: #fcfaf7; text-decoration: none; font-size: 15px; font-weight: 500; line-height: 24px; letter-spacing: .015em; box-shadow: inset 0 1px 0 rgba(255,255,255,.6), inset 0 -1px 0 rgba(255,255,255,.12), 0 4px 14px rgba(75,47,28,.035); }
+@supports ((backdrop-filter: blur(12px)) or (-webkit-backdrop-filter: blur(12px))) { .links a { background: linear-gradient(125deg, rgba(255,255,255,.16), rgba(255,255,255,.02)), rgba(255,255,255,.28); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); } }
+.link-label { display: inline-flex; align-items: center; justify-content: center; gap: 10px; }
+.link-icon { display: block; width: 20px; height: 20px; object-fit: contain; flex: 0 0 20px; }
+.arrow { position: absolute; right: 20px; font-size: 17px; color: #6b5c51; }
+@media (hover: hover) { .links a:hover { border-color: #f05a2a; background-color: rgba(255,255,255,.44); } .links a:hover .arrow { color: #b53a14; } }
+.links a:focus-visible { outline: 3px solid #c54219; outline-offset: 4px; border-color: #f05a2a; }
+.visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
+@media (max-height: 600px) { body { padding-top: 32px; padding-bottom: 32px; } .description { margin-top: 22px; margin-bottom: 28px; } }

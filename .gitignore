@@ -1,0 +1,13 @@
+.DS_Store
+*.log
+.env
+.env.*
+*.pem
+*.key
+*credentials*.json
+*service-account*.json
+.firebase/
+.cache/
+node_modules/
+verification-artifacts/
+screenshots/
