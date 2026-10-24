@@ -25,7 +25,7 @@ cd /Users/smkim/dev/faber-links
 
 ## 작업 범위
 
-정적 페이지 완성본은 https://github.com/smjy9502/faber-visit 의 main 브랜치에 기록합니다. 원격의 기존 LICENSE와 초기 커밋 이력을 보존합니다. Firebase 현황은 읽기 전용으로 확인하며 사이트 생성·설정 파일 생성·target 연결·배포는 별도 승인 후 진행합니다. 기존 faber-home 및 faber-sam-server 저장소와 운영 서비스는 작업 대상이 아닙니다.
+정적 페이지 완성본은 https://github.com/smjy9502/faber-visit 의 main 브랜치에 기록합니다. 원격의 기존 LICENSE와 초기 커밋 이력을 보존합니다. 이 저장소의 Firebase 배포는 faber-home-d6f62 프로젝트의 faber-visit 사이트와 visit target으로 한정합니다. 기존 faber-home 및 faber-sam-server 저장소와 운영 서비스는 작업 대상이 아닙니다.
 
 ## 아이콘 출처와 사용 지침 (2026-10-24 확인)
 
@@ -42,3 +42,29 @@ cd /Users/smkim/dev/faber-links
 ## 저장소와 자산
 
 원격 저장소는 public이므로 추적된 코드·자산이 공개됩니다. 기존 Apache-2.0 LICENSE를 그대로 보존하며, Faber 및 Meta 브랜드 자산의 상표·사용 조건은 각 권리자의 지침을 따릅니다. 환경 변수, 인증 파일, 로그·캐시 및 임시 검증 산출물은 기록하지 않습니다.
+
+## Firebase Hosting 배포
+
+공개 URL:
+
+- https://faber-visit.web.app
+- https://faber-visit.firebaseapp.com
+
+프로젝트: `faber-home-d6f62` / SITE_ID: `faber-visit` / deploy target: `visit` / 정적 디렉터리: `public`.
+
+프로젝트 루트에서 전용 선택 배포 명령만 사용합니다.
+
+```sh
+cd /Users/smkim/dev/faber-links
+firebase deploy --only hosting:visit --project faber-home-d6f62
+```
+
+현재 Mac에서 CLI가 PATH에 없는 경우 이미 설치된 실행 파일로 같은 명령을 실행할 수 있습니다.
+
+```sh
+/Users/smkim/.nvm/versions/node/v24.18.0/bin/node /Users/smkim/.nvm/versions/node/v18.20.7/lib/node_modules/firebase-tools/lib/bin/firebase.js deploy --only hosting:visit --project faber-home-d6f62
+```
+
+`firebase.json`과 `.firebaserc`의 프로젝트·target·SITE_ID 매핑을 확인한 후 배포합니다. 전체 프로젝트 배포나 다른 target 배포는 하지 않습니다. 기존 default Hosting 사이트 `faber-home-d6f62`와 App Hosting backend를 재사용하거나 수정하지 않습니다. Auth, Firestore, Storage, Functions, Cloud Run, Gateway, IAM, Billing 설정도 변경하지 않습니다. 별도 SPA rewrite, 서버, Firebase SDK, GPU 또는 유료 API 호출은 없습니다. Homepage 링크는 기존 공식 서비스로 이동합니다.
+
+2026-10-24 최초 배포 후 두 도메인의 HTTPS 200 응답과 public 파일 7개의 로컬 SHA-256 일치를 확인했습니다. Chrome에서 390×844, 320×568 화면, 문구·링크·CSS·이미지 로딩과 콘솔 오류 없음을 확인했습니다. 실제 모바일 기기 및 공개 페이지의 Safari 검증은 별도로 수행하지 않았습니다. 검증 스크린샷·캐시·로그는 Git에 포함하지 않습니다.

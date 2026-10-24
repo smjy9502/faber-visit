@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "faber-home-d6f62"
+  },
+  "targets": {
+    "faber-home-d6f62": {
+      "hosting": {
+        "visit": [
+          "faber-visit"
+        ]
+      }
+    }
+  }
+}
